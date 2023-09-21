@@ -8,11 +8,9 @@ class Solution {
     
             if(next<curr){
                 int minimum = findMin(curr,next,i,nums);
-                System.out.println(minimum+"min");
                 int temp = nums[minimum];
                 nums[minimum] = nums[i-1];
                 nums[i-1] = temp;
-                System.out.println(nums[i]+" : ");
                 sortTheRest(i,nums);
                 return;
             }
@@ -29,14 +27,12 @@ class Solution {
                 minimum = i;
             }
         }
-        // System.out.println(minimum+" : ");
         return minimum;
     }
        
     void sortTheRest(int curr,int[] nums){
         for(int i=curr;i<nums.length;i++){
             for(int j=i+1;j<nums.length;j++){
-                System.out.println(nums[i]+" "+nums[j]);
                 if(nums[i]>nums[j]){
                     int temp = nums[i];
                     nums[i] = nums[j];
