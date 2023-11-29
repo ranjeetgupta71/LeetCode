@@ -1,17 +1,18 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        
-        for(int i=0;i<nums.length;i++){
-            hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+        int xy = 0;
+        for(int n: nums){
+            xy^=n;
         }
         
-        int[] res = new int[2];
-        int i=0;
+        xy &= -xy;
         
-        for(int key : hm.keySet()){
-            if(hm.get(key) == 1){
-                res[i++] = key;
+        int[] res = new int[2];
+        
+        for(int n:nums){
+            if((xy & n) == 0) res[0] ^= n ;
+            else{
+                res[1] ^= n ;
             }
         }
         
