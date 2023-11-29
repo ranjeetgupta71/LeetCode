@@ -9,10 +9,8 @@ class Solution {
         HashSet<Integer> seen = new HashSet<>();
         
         for(int num: hm.values()){
-            if(seen.contains(num)){
+            if(!seen.add(num)){
                 return false;
-            }else{
-                seen.add(num);
             }
         }
         
